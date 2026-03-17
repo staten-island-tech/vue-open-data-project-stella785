@@ -1,18 +1,18 @@
 <template>
     <div class="container">
-        <SchoolCard v-for="(school, index) in school" :key="school.feeder_school_name" :school="school"/>
+        <SchoolCard v-for="(item, index) in schools" :key="index" :school="item"/>
     </div>
 </template>
 
 <script setup>
 import {ref, onMounted} from 'vue'
 import SchoolCard from '@/components/SchoolCard.vue';
-const school = ref([])
+const schools = ref([])
 async function getSchool() {
     try {
         const response = await fetch('https://data.cityofnewyork.us/resource/k8ah-28f4.json')
         const data = await response.json()
-        school.value = data.results
+        school.value = data
     } catch (error) {
         console.log(error)
     }

@@ -1,7 +1,7 @@
 <template>
-    <router-link :to="schoolpath" class="card">
-        <h2>{{ feeder_school_name }}</h2>
-        <h3>{{ number_of_offers }}</h3>
+    <router-link :to="schoolPath" class="card">
+        <h2>{{ school.feeder_school_name }}</h2>
+        <h3>{{ school.number_of_offers }}</h3>
     </router-link>
 </template>
 
@@ -9,7 +9,7 @@
 import {computed} from 'vue'
 const props = defineProps({
     school:{
-        type: String,
+        type: Object,
         required: true,
     },
 
