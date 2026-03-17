@@ -1,5 +1,5 @@
-import SchoolCard from '@/component/SchoolCard.vue'
-import SchoolData from '@/component/SchoolData.vue'
+import SchoolCard from '@/components/SchoolCard.vue'
+import SchoolData from '@/components/SchoolData.vue'
 import MainScreen from '@/views/MainScreen.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
