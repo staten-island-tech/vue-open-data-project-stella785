@@ -20,5 +20,15 @@ const schoolPath = computed (() => {
 </script>
 
 <style scoped>
-
+.card {
+    width: 33%;
+    height: 300px;
+    background-color: #aa9fb1;
+}
+h2 {
+    color: #000000;
+}
+h3 {
+    color: #363946;
+}
 </style>

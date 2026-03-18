@@ -12,7 +12,7 @@ const router = createRouter({
       component: MainScreen,
     },
     {
-      path: '/schooldata',
+      path: '/school/:school.feeder_school_name',
       name: 'schooldata',
       component: SchoolData,
     },

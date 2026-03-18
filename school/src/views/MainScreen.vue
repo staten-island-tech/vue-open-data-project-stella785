@@ -1,18 +1,18 @@
 <template>
     <div class="container">
-        <SchoolCard v-for="(item, index) in schools" :key="index" :school="item"/>
+        <SchoolCard v-for="(item, index) in school" :key="index" :school="item"/>
     </div>
 </template>
 
 <script setup>
 import {ref, onMounted} from 'vue'
-import SchoolCard from '@/components/SchoolCard.vue';
-const schools = ref([])
+import SchoolCard from '../components/SchoolCard.vue';
+const school = ref([])
 async function getSchool() {
     try {
         const response = await fetch('https://data.cityofnewyork.us/resource/k8ah-28f4.json')
         const data = await response.json()
-        school.value = data
+        school.value = data.results
     } catch (error) {
         console.log(error)
     }
@@ -23,5 +23,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
 </style>
