@@ -13,7 +13,7 @@ const school = ref({})
 async function getSchool(name) {
     const response = await fetch(`https://data.cityofnewyork.us/resource/k8ah-28f4.json?feeder_school_name=${name}`)
     const data = await response.json()
-    school.value = data
+    school.value = data[0]
 }
 onMounted(() => {
     getSchool(route.params.feeder_school_name)

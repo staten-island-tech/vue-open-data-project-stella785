@@ -12,7 +12,7 @@ async function getSchool() {
     try {
         const response = await fetch('https://data.cityofnewyork.us/resource/k8ah-28f4.json')
         const data = await response.json()
-        school.value = data.results
+        school.value = data
     } catch (error) {
         console.log(error)
     }
