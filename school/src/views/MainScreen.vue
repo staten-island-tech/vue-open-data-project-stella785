@@ -1,4 +1,5 @@
 <template>
+    <h1>SHSAT Acceptance Rates</h1>
     <div class="container">
         <SchoolCard v-for="(item, index) in school" :key="index" :school="item"/>
     </div>
@@ -23,7 +24,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
+h1 {
+    text-align: center;
+    margin: 0;
+    background-color: #9f9fad;
+    padding: 50px;
+}
 .container {
+    background-color: #b7b3a1;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;

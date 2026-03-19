@@ -1,7 +1,7 @@
 <template>
     <router-link :to="schoolPath" class="card">
         <h2>{{ school.feeder_school_name }}</h2>
-        <h3>{{ school.number_of_offers }}</h3>
+        <h3>Number of offers: {{ school.number_of_offers }}</h3>
     </router-link>
 </template>
 
@@ -20,10 +20,16 @@ const schoolPath = computed (() => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .card {
     width: 33%;
     height: 300px;
     background-color: #aa9fb1;
+    font-family: "Caudex", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 10px;
+    margin: 10px;
 }
 h2 {
     color: #000000;
