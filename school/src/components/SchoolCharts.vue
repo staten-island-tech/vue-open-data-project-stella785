@@ -8,10 +8,9 @@
     </div>
 </template>
 
-<script setup>
+<script>
 import { Bar } from 'vue-chartjs';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-import {ref, onMounted} from 'vue'
 
 ChartJS.register(
   Title,
@@ -22,7 +21,33 @@ ChartJS.register(
   LinearScale
 )
 
-const chartData = ref(null)
+const props = defineProps({
+    acceptance:{
+        type: Object,
+        required: true,
+    },
+
+})
+
+export default {
+  name: 'BarChart',
+  components: { Bar },
+  data() {
+    return {
+      chartData: {
+        labels: sorted.map(item => item.feeder_school_name),
+        datasets: [
+          {
+            label: 'Number of Acceptance',
+            backgroundColor: '#aa9fb1',
+            data: sorted.map(item => Number(item.number_of_offers))
+          }
+        ]
+      }
+    }
+  }
+}
+/* const chartData = ref(null)
 
 const chartOptions = {
   responsive: true,
@@ -54,7 +79,7 @@ onMounted(async () => {
       }
     ]
   }
-})
+}) */
 </script>
 
 <style scoped>
