@@ -5,7 +5,7 @@
         <h2>Number of testers: {{ school.count_of_testers }}</h2>
         <h3>Number of offers: {{ school.number_of_offers }}</h3>
         <h3>Number of Discovery participants: {{ school.number_of_discovery_participants }}</h3>
-        <button>Exit</button>
+        <router-link to="/">Exit</router-link>
     </div>
 </template>
 

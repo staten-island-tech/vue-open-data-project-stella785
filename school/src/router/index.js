@@ -1,4 +1,3 @@
-import SchoolCard from '@/components/SchoolCard.vue'
 import SchoolData from '@/components/SchoolData.vue'
 import MainScreen from '@/views/MainScreen.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -7,7 +6,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/mainscreen',
+      path: '/',
       name: 'mainscreen',
       component: MainScreen,
     },
@@ -15,11 +14,6 @@ const router = createRouter({
       path: '/school/:feeder_school_name',
       name: 'schooldata',
       component: SchoolData,
-    },
-    {
-      path: '/schoolcard',
-      name: 'schoolcard',
-      component: SchoolCard,
     }
   ],
 })
