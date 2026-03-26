@@ -33,7 +33,7 @@ export default {
           legend: { position: 'top' },
           title: {
             display: true,
-            text: 'Top 10 SHSAT Offers by School'
+            text: 'SHSAT Offers by School'
           }
         }
       }
@@ -49,7 +49,7 @@ export default {
       const sorted = data
         .filter(item => item.number_of_offers)
         .sort((a, b) => Number(b.number_of_offers) - Number(a.number_of_offers))
-        .slice(0, 10)
+        .slice(0, 20)
 
       this.chartData = {
         labels: sorted.map(item => item.feeder_school_name),
