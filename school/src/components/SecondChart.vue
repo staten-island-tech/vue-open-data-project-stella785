@@ -39,7 +39,37 @@ export default {
       )
       const data = await response.json()
 
-      
+      const counts = {}
+      data.forEach(item => {
+        const key = item.borough || 'Unknown'
+        if (counts[key] === undefined) {
+          counts[key] = 0
+        }
+        counts[key] += 1
+      })
+      const labels = []
+      const values = []
+      for (const key in counts) {
+        labels.push(key)
+        values.push(counts[key])
+      }
+      this.chartData = {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Number of Offers',
+            data: values,
+            backgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#4BC0C0',
+              '#9966FF',
+              '#FF9F40'
+            ]
+          }
+        ]
+      }
     } catch (error) {
       console.error(error)
     }

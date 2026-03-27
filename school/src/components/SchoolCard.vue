@@ -15,7 +15,7 @@ const props = defineProps({
 
 })
 const schoolPath = computed (() => {
-    return `/school/${props.school.feeder_school_name}`
+    return `/school/${encodeURIComponent(props.school.feeder_school_name)}`
 })
 </script>
 

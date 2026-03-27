@@ -15,7 +15,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 const school = ref({})
 async function getSchool(name) {
-    const response = await fetch(`https://data.cityofnewyork.us/resource/k8ah-28f4.json?feeder_school_name=${name}`)
+    const response = await fetch(`https://data.cityofnewyork.us/resource/k8ah-28f4.json?feeder_school_name=${encodeURIComponent(name)}`)
     const data = await response.json()
     school.value = data[0]
 }
