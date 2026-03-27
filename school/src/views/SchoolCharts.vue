@@ -1,5 +1,6 @@
 <template>
     <div>
+        <router-link to="/">Home Page</router-link>
         <Bar
             v-if="chartData"
             :data="chartData"

@@ -1,7 +1,7 @@
 <template>
     <h1>SHSAT Acceptance Rates</h1>
-    <SchoolCharts/>
-    <SecondChart/>
+    <router-link to="/barchart">Bar Chart</router-link>
+    <router-link to="/piechart">Pie Chart</router-link>
     <div class="container">
         <SchoolCard v-for="(item, index) in school" :key="index" :school="item"/>
     </div>
@@ -10,8 +10,6 @@
 <script setup>
 import {ref, onMounted} from 'vue'
 import SchoolCard from '../components/SchoolCard.vue';
-import SchoolCharts from '../components/SchoolCharts.vue'
-import SecondChart from '@/components/SecondChart.vue';
 const school = ref([])
 async function getSchool() {
     try {

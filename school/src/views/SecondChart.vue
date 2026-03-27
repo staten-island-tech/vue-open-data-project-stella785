@@ -1,5 +1,6 @@
 <template>
     <div>
+        <router-link to="/">Home Page</router-link>
         <Pie v-if="chartData" :data="chartData" :options="chartOptions" />
     </div>
 </template>
@@ -26,7 +27,7 @@ export default {
           legend: { position: 'top' },
           title: {
             display: true,
-            text: 'SHSAT Offerings'
+            text: 'SHSAT Offerings By Borough'
           }
         }
       }
