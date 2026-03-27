@@ -1,6 +1,8 @@
 <template>
     <div>
+      <button>
         <router-link to="/">Home Page</router-link>
+      </button>
         <Bar
             v-if="chartData"
             :data="chartData"
@@ -71,5 +73,8 @@ export default {
 </script>
 
 <style scoped>
-
+button {
+    margin: 20px;
+    padding: 20px;
+}
 </style>
