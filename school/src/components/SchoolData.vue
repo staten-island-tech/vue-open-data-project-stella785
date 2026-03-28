@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Pie v-if="loaded" :data="chartData" :options="chartOptions" />
         <h1>{{ school.feeder_school_name }}</h1>
         <h2>Year: {{ school.year }}</h2>
         <h2>Number of testers: {{ school.count_of_testers }}</h2>
@@ -9,25 +10,68 @@
     </div>
 </template>
 
-<script setup>
-import { onMounted, ref, watch } from 'vue';
+<script>
 import { useRoute } from 'vue-router';
-const route = useRoute()
-const school = ref({})
-async function getSchool(name) {
+import { Pie } from 'vue-chartjs'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+
+ChartJS.register(ArcElement, Tooltip, Legend)
+
+export default {
+    name: 'SchoolData',
+    components: { Pie },
+    data() {
+    return {
+        loaded: false,
+        school: {},
+        chartData: null,
+        chartOptions: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: {
+            display: true,
+            text: 'Testers vs Accepted'
+          }
+        }
+        }
+    }
+  },
+  async mounted() {
+    const route = useRoute()
+    const name = route.params.feeder_school_name
+
+    try {
     const response = await fetch(`https://data.cityofnewyork.us/resource/k8ah-28f4.json?feeder_school_name=${encodeURIComponent(name)}`)
     const data = await response.json()
-    school.value = data[0]
-}
-onMounted(() => {
-    getSchool(route.params.feeder_school_name)
-})
-watch(
-    () => route.params.feeder_school_name,
-    function(name) {
-        getSchool(name)
+    this.school = data[0]
+
+    let testers = Number(this.school.count_of_testers)
+    let offers = Number(this.school.number_of_offers)
+
+    if (!testers) {
+        testers = 0
     }
-)
+    if (!offers) {
+        offers = 0
+    }
+
+    this.chartData = {
+    labels: ['Accepted', 'Not Accepted'],
+    datasets: [
+        {
+        label: 'Students',
+        data: [offers, testers - offers],
+        backgroundColor: ['#FF6384', '#66BB6A']
+        }
+    ]
+    }
+    this.loaded = true
+    } catch (error) {
+    console.error(error)
+    }
+    }
+}
 </script>
 
 <style scoped>
