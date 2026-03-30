@@ -2,9 +2,6 @@
     <button>
         <router-link to="/barchart">Bar Chart</router-link>
     </button>
-    <button>
-        <router-link to="/piechart">Pie Chart</router-link>
-    </button>
     <h1>SHSAT Acceptance Rates</h1>
     <div class="container">
         <SchoolCard v-for="(item, index) in school" :key="index" :school="item"/>

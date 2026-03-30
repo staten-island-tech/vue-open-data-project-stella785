@@ -1,7 +1,6 @@
 import SchoolData from '@/components/SchoolData.vue'
 import MainScreen from '@/views/MainScreen.vue'
 import SchoolCharts from '@/views/SchoolCharts.vue'
-import SecondChart from '@/views/SecondChart.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -21,12 +20,7 @@ const router = createRouter({
       path: '/barchart',
       name: 'barchart',
       component: SchoolCharts
-    },
-      {
-      path: '/piechart',
-      name: 'piechart',
-      component: SecondChart
-    },
+    }
   ],
 })
 
